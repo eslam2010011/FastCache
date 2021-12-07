@@ -68,13 +68,13 @@ public class RoomImpl extends MNetwork implements DB , MRx {
         long timestamp = entity.timestamp;
         long expireTime = entity.expireTime;
         T result = null;
-        if (expireTime<0) { // 缓存的数据从不过期
+        if (expireTime<0) {
 
             String json = entity.data;
             result = converter.fromJson(json,type);
         } else {
 
-            if (timestamp + expireTime > System.currentTimeMillis()) {  // 缓存的数据还没有过期
+            if (timestamp + expireTime > System.currentTimeMillis()) {
 
                 String json = entity.data;
 
